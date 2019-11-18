@@ -24,6 +24,7 @@
 <li>Students can use Object.assign() to create a new object</li>
 <li>Students can use object destructuring to create new variables from an object</li>
 </ul>
+</details>
 
 <details>
 <summary>Nesting</summary>
@@ -32,8 +33,6 @@
 <li>Students can build arrays of arrays and arrays of objects</li>
 <li>Students can nest for loops</li>
 </ul>
-</details>
-
 </details>
 
 <details>
