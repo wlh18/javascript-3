@@ -567,8 +567,8 @@ const secondPerson = { ...person, name: 'Josh' }
 [YouTube - Nested loops](https://www.youtube.com/watch?v=piKpw_CghS8) - A visual breakdown of a nested for loop.
 
 
-# JavaScript 2 Mini Project
+# JavaScript 3 Mini Project
 Embedded in Unit 1.5 at https://lms.devmountain.com/courses/70
 
-# JavaScript 2 Afternoon Project
+# JavaScript 3 Afternoon Project
 https://github.com/DevMountain/javascript-3-afternoon-project
