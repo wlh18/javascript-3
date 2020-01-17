@@ -1,5 +1,5 @@
 ## Lecture Code
-https://repl.it/@matias_perez/JavaScript-3-Lecture-Code
+https://repl.it/@matias_perez/Lecture-code-js3?timeToCodeId=576a53d4-496b-4f38-9bc0-a901d156033a
 
 # Lesson Sections
 
