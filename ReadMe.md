@@ -462,8 +462,6 @@ One of the more useful features added in ES6 is the spread operator. This gives 
 
 #### Arrays
 
----
-
 Using the spread operator to make copies of arrays is very simple, let's take a look:
 
 ```js
@@ -497,8 +495,6 @@ const nums = [...evens, ...odds]
 > Note: All of the techniques we have learned here can be mixed an matched to make your code more concise and readable.
 
 #### Objects
-
----
 
 Using the spread operator with objects works much the same as with arrays. We can make a copy of an object:
 
@@ -541,7 +537,7 @@ const secondPerson = { ...person, name: 'Josh' }
 //This will give us a new object based on the person object, but with a unique name property.
 ```
 
-### Additional Resources
+# Additional Resources
 
 
 ## General
