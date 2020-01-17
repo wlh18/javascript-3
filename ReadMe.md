@@ -1,6 +1,17 @@
-# Javascript 3
+## Lecture Code
+https://repl.it/@matias_perez/JavaScript-3-Lecture-Code
 
-## Learning objectives
+# Lesson Sections
+
+## Slideshow: https://slides.com/matias_perez/javascript-three/
+
+1. [JavaScript 3 Lecture Notes](#JavaScript-3-Lecture-Notes)
+1. [Additional Resources](#additional-resources)
+1. [JavaScript 3 Mini Project](#JavaScript-3-Mini-Project)
+1. [JavaScript 3 Afternoon Project](#JavaScript-3-Afternoon-Project)
+
+
+## Student Learning Objectives
 
 <details>
 <summary>Array Methods</summary>
@@ -57,7 +68,7 @@
 
 ---
 
-## Javascript 3 lecture notes
+## Javascript 3 Lecture Notes
 
 ### Array methods, nesting, and the spread operator
 
@@ -530,11 +541,10 @@ const secondPerson = { ...person, name: 'Josh' }
 //This will give us a new object based on the person object, but with a unique name property.
 ```
 
-### Additional resources
+### Additional Resources
 
----
 
-General
+## General
 
 [Top 10 ES6 Features Every Busy JavaScript Developer Must Know](https://webapplog.com/es6/) - A good breakdown of ES6 features
 
@@ -550,12 +560,15 @@ General
 
 [Spread syntax - JavaScript \| MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) - More information about spread.
 
----
 
-Videos
-
----
-
+## Videos
 [YouTube - Higher order functions and arrays](https://www.youtube.com/watch?v=rRgD1yVwIvE) - A more detailed breakdown of some of the array methods we have covered here.
 
 [YouTube - Nested loops](https://www.youtube.com/watch?v=piKpw_CghS8) - A visual breakdown of a nested for loop.
+
+
+# JavaScript 2 Mini Project
+Embedded in Unit 1.5 at https://lms.devmountain.com/courses/70
+
+# JavaScript 2 Afternoon Project
+https://github.com/DevMountain/javascript-3-afternoon-project
