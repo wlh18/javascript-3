@@ -3,7 +3,7 @@ https://repl.it/@matias_perez/Lecture-code-js3?timeToCodeId=576a53d4-496b-4f38-9
 
 # Lesson Sections
 
-## Slideshow: https://slides.com/matias_perez/javascript-three/
+## Slideshow: https://slides.com/mattbodily/javascript-three
 
 1. [JavaScript 3 Lecture Notes](#JavaScript-3-Lecture-Notes)
 1. [Additional Resources](#additional-resources)
