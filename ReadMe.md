@@ -14,27 +14,52 @@ https://repl.it/@matias_perez/Lecture-code-js3?timeToCodeId=576a53d4-496b-4f38-9
 ## Student Learning Objectives
 
 <details>
-<summary>Array Methods</summary>
-<ul>
-<li>Students can use the following array methods:
-<ul>
-  <li>map</li>
-  <li>forEach</li>
-  <li>filter</li>
-  <li>reduce</li>
-</ul>
-</li>
-</ul>
+  <summary>Arrow Functions</summary>
+  <ul>
+  <li>Students can create/define functions using arrow function syntax
 </details>
 
 <details>
-<summary>Objects</summary>
-<ul>
-<li>Students can use delete to delete an object property</li>
-<li>Students can use a for in loop to access property names and values on an object</li>
-<li>Students can use Object.assign() to create a new object</li>
-<li>Students can use object destructuring to create new variables from an object</li>
-</ul>
+  <summary>Array Methods</summary>
+  <ul>
+  <li>Students can use the following array methods:
+  <ul>
+    <li>forEach</li>
+    <li>map</li>
+    <li>filter</li>
+    <li>reduce</li>
+  </ul>
+  </li>
+  </ul>
+</details>
+
+<details>
+  <summary>Objects</summary>
+  <ul>
+  <li>Students can use delete to delete an object property</li>
+  <li>Students can use a for in loop to access property names and values on an object</li>
+  <li>Students can use Object.assign() to create a new object</li>
+  <li>Students can use object destructuring to create new variables from an object</li>
+  </ul>
+</details>
+
+<details>
+  <summary>Spread Operator</summary>
+  <ul>
+  <li>Students can use the spread operator with arrays:
+  <ul>
+    <li>Making a copy of an array</li>
+    <li>Declaring a new array literal</li>
+    <li>Concatenating arrays</li>
+  </ul>
+  </li>
+  <li>Students can use the spread operator with objects:
+  <ul>
+    <li>Making a copy of an object</li>
+    <li>Declaring a new object literal</li>
+  </ul>
+  </li>
+  </ul>
 </details>
 
 <details>
@@ -46,37 +71,38 @@ https://repl.it/@matias_perez/Lecture-code-js3?timeToCodeId=576a53d4-496b-4f38-9
 </ul>
 </details>
 
-<details>
-<summary>Spread Operator</summary>
-<ul>
-<li>Students can use the spread operator with arrays:
-<ul>
-  <li>Making a copy of an array</li>
-  <li>Declaring a new array literal</li>
-  <li>Concatenating arrays</li>
-</ul>
-</li>
-<li>Students can use the spread operator with objects:
-<ul>
-  <li>Making a copy of an object</li>
-  <li>Declaring a new object literal</li>
-</ul>
-</li>
-</ul>
-
-</details>
-
 ---
 
 ## Javascript 3 Lecture Notes
 
-### Array methods, nesting, and the spread operator
+### Arrow Functions, Array Methods, the Spread Operator, and Nesting 
 
 ---
 
-In this lecture, we are introduced to some more advanced array methods that allow us to manipulate data in interesting ways. We also learn various methods to make our code more compact and increase readability.
+In this lecture, we are introduced to some more advanced array methods that allow us to manipulate data in interesting ways. We also learn various methods to make our code more compact and increase its readability.
 
 > Note: The topics covered in this lesson will be used incredibly frequently in all JavaScript projects. It will be worth your time to copy the code snippets presented here and play with them in a repl. The more practice you can get on these subjects, the better.
+
+### Arrow Functions
+
+---
+
+Arrow functions were introduced during the ES6 release of JavaScript and are a great way to condense code while also creating/defining functions
+
+```js
+//Below is an example of a function declaration
+function sum(num1, num2) {
+  return num1 + num2
+}
+
+//This is an example of the same function written using an arrow function
+const sum = (num1, num2) => {
+  return num1 + num2
+}
+
+//This is a yet shorter version of the same arrow function from above - because there are no curly brackets here, the return is implied
+const sum = (num1, num2) => num1 + num2
+```
 
 ### Array Methods
 
@@ -84,25 +110,54 @@ In this lecture, we are introduced to some more advanced array methods that allo
 
 A method is a function which lives on an object. All of the methods we will discuss here live on the global `Array` object. Each data type has its own global object, meaning that they are accessible anywhere in our file and on any variable of that data type.
 
-> It will be worth your time to look into some of the methods that live on the global objects for each of the data types `Number`, `String`, `Object`, `Function`, etc. There are also a number of other global objects such as `Math` and `JSON` which are extremely helpful.
+> It will be worth your time to look into some of the methods that live on the global objects for each of the data types `Number`, `String`, `Object`, `Function`, etc. There are also a number of other global objects such as `Math` and `JSON` which are extremely helpful. There are a few links in the additional resources section of this document that can help get you started learning about those.
 
-Using the array methods we will look at today can be a bit overwhelming at first, so we will break down the syntax and give a lot of examples. Array methods are invoked by chaining them onto an array using `.`. We then name the method and invoke it, passing in any necessary arguments. The methods we will learn today each accept only one argument, a callback function.
+Using the array methods we will look at today can be a bit overwhelming at first, so we will break down the syntax and give a lot of examples. Array methods are invoked by chaining them onto an array using `.`. We then name the method and invoke it, passing in any necessary arguments. It is also important to note that these functions operate much like a `for` loop because they loop over the specified array similar to how we used `for` loops in the past with arrays. The methods we will learn today each accept only one argument, a callback function.
 
-> Note: This callback function will accept different arguments depending on which we are invoking.
+> Note: This callback function will accept different arguments depending on which function we are invoking.
 
 Let's see some examples:
+
+#### .forEach
+
+---
+
+The .forEach array method loops over the array and performs an action for each item in the array without returning a new array. This can be useful for performing an action a set number of times or editing the values in the original array. Let's look at an example:
+
+The .forEach callback function will loop over the given array in a way very similar to a for loop can and accepts three arguments:
+
+1. The individual item it is looking at, often referred to as `element` or `el`.
+2. The index of the item being looked at.
+3. The entire original array.
+
+
+```js
+const names = ['Andrew', 'Jonathan', 'Josh']
+//If we simply wanted to print each of these names to the console, we could do this:
+
+names.forEach(function(element, index, array) {
+  console.log(element)
+})
+
+//However, the usefulness of this is limited.  Let's imagine we wanted to find out who was cool, but didn't need a new array.
+
+names.forEach(function(element, index, array) {
+  if (element === 'Andrew') {
+    names[index] = element + ' is cool.'
+  } else {
+    names[index] = element + ' is not cool.'
+  }
+})
+
+//names now looks like this:
+//['Andrew is cool', 'Jonathan is not cool', 'Josh is not cool']
+```
 
 #### .map
 
 ---
 
-The .map method is used to create a new array of the same length as the original array, generally changing some aspect of the original array.
-
-The .map callback function will loop over the given array in a way very similar to a for loop can and accepts three arguments:
-
-1. The individual item it is looking at, often referred to as `element` or `el`.
-2. The index of the item being looked at.
-3. The entire original array.
+The .map method behaves very similarly to .forEach and its callback function even takes the same arguments (element, index, and array) - the major difference being that it is used to create a new array instead of simply performing an action for each item in the array.  The .map method returns a new array of the same length as the original array and generally will change some aspect of the values in the original array.
 
 Let's look at what this will look like:
 
@@ -145,34 +200,6 @@ const whoIsCool = names.map(function(element, index, array) {
 > 2.  The array returned by .map will **always** be the same length as the original array. If you do not provide a valid return as part of your callback function, that element will be `undefined`.
 > 3.  You do not have to provide all 3 arguments to your callback function. If you only need the element, that's all you have to pass to the callback function. Just remember that the first argument passed is the element, the second is the index, and the third is the array, regardless of what you name each of them.
 
-#### .forEach
-
----
-
-.forEach behaves very similarly to .map, its callback function even takes the same arguments. The major difference is that it does not return a new array, it simply performs an action for each item in the array. This can be useful for performing an action a set number of times or editing the original array. Let's look at an example:
-
-```js
-const names = ['Andrew', 'Jonathan', 'Josh']
-//If we simply wanted to print each of these names to the console, we could do this:
-
-names.forEach(function(element, index, array) {
-  console.log(element)
-})
-
-//However, the usefulness of this is limited.  Let's imagine we wanted to find out who was cool, but didn't need a new array.
-
-names.forEach(function(element, index, array) {
-  if (element === 'Andrew') {
-    names[index] = element + ' is cool.'
-  } else {
-    names[index] = element + ' is not cool.'
-  }
-})
-
-//names now looks like this:
-//['Andrew is cool', 'Jonathan is not cool', 'Josh is not cool']
-```
-
 #### .filter
 
 ---
@@ -183,7 +210,7 @@ True to its name, .filter allows us to filter items out of an array based on a s
 const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 //Imagine we only want the even numbers from this array
 
-const evens = nums.filer(function(element, index, array) {
+const evens = nums.filter(function(element, index, array) {
   if (element % 2 === 0) {
     return true
   }
@@ -199,7 +226,7 @@ const evens = nums.filer(function(element, index, array) {
 
 ---
 
-.reduce allows us to take many values and reduce them down to a single value. It is slightly different from the others we have looked at today because it takes in two arguments, a callback function and an initializer. The initializer is important because it tells .reduce what data type we are expecting to return from the function. If no initializer is provided, the first item in the array will be used. Furthermore, the callback function accepts one extra argument, the accumulator. The accumulator is used to keep track of our value as we loop through the array. The simplest functionality of .reduce is to sum an array of numbers but the possibilities are endless. Let's take a look:
+.reduce allows us to take many values and reduce them down to a single value. It is slightly different from the others we have looked at today because it takes in two arguments, a callback function and an initializer. The initializer is important because it tells .reduce what data type we are expecting to return from the function. If no initializer is provided, the first item in the array will be used as the initial starting value in the function. Furthermore, the callback function accepts one extra argument, the accumulator. The accumulator is used to keep track of our value as we loop through the array. The simplest functionality of .reduce is to sum an array of numbers but the possibilities are endless. Let's take a look:
 
 ```js
 const nums = [1, 2, 3, 4, 5]
@@ -361,6 +388,89 @@ for (let key in person) {
 
    > This edits the original array, adding the keys from the second object onto the first. The original `person` object will now have the `car`, `season`, and `brand` keys. If there are common keys between the two objects, the source object will override the target object.
 
+### The Spread Operator (...)
+
+---
+
+One of the more useful features added in ES6 is the spread operator. This gives us a simple way to make copies of arrays and objects, this is referred to as spreading them.
+
+#### Arrays
+
+Using the spread operator to make copies of arrays is very simple, let's take a look:
+
+```js
+const names = ['Andrew', 'Jonathan', 'Josh']
+
+const moreNames = [...names]
+//This will spread the names array onto our new moreNames array, making a copy.  We can edit these independently of each other.  Changes to one will not affect the other.
+```
+
+We can also use the spread operator to use an existing array as a jumping off point for a new array:
+
+```js
+const names = ['Andrew', 'Jonathan', 'Josh']
+
+const moreNames = [...names, 'Brandon', 'Steve']
+//This spreads our names array onto moreNames and then adds 'Brandon' and 'Steve' to the moreFriends array.
+//Again, this does not affect the original array.
+```
+
+Finally, we can use the spread operator to concatenate arrays:
+
+```js
+const evens = [2, 4, 6]
+const odds = [1, 3, 5]
+
+const nums = [...evens, ...odds]
+//This will concatenate the two arrays together.
+//nums will be equal to [2,4,6,1,2,3]
+```
+
+> Note: All of the techniques we have learned here can be mixed an matched to make your code more concise and readable.
+
+#### Objects
+
+Using the spread operator with objects works much the same as with arrays. We can make a copy of an object:
+
+```js
+const person = {
+  name: 'Andrew',
+  age: 27,
+  married: true,
+}
+
+const anotherPerson = { ...person }
+//This gives me a copy of my person object without affecting the original
+```
+
+We can also use existing objects as a jumping off point:
+
+```js
+const person = {
+  name: 'Andrew',
+  age: 27,
+  married: true,
+}
+
+const detailedPerson = { ...person, height: '6 feet', attractive: true }
+//This will create a new object which has the same properties as the original person object
+//It also adds the height and attractive properties.
+```
+
+Finally, you can overwrite existing properties on new objects. Let's imagine that Josh is also 27 and married but his name is Josh, we can do:
+
+```js
+const person = {
+  name: 'Andrew',
+  age: 27,
+  married: true,
+}
+
+const secondPerson = { ...person, name: 'Josh' }
+
+//This will give us a new object based on the person object, but with a unique name property.
+```
+
 ### Nesting
 
 #### Objects within objects, arrays within arrays, and arrays within objects
@@ -454,88 +564,6 @@ etc...
 
 Take some time to play around with this and experiment until you understand what is going on. This is a good exercise in tracking data and the values of changing variables.
 
-### The spread operator (...)
-
----
-
-One of the more useful features added in ES6 is the spread operator. This gives us a simple way to make copies of arrays and objects, this is referred to as spreading them.
-
-#### Arrays
-
-Using the spread operator to make copies of arrays is very simple, let's take a look:
-
-```js
-const names = ['Andrew', 'Jonathan', 'Josh']
-
-const moreNames = [...names]
-//This will spread the names array onto our new moreNames array, making a copy.  We can edit these independently of each other.  Changes to one will not affect the other.
-```
-
-We can also use the spread operator to use an existing array as a jumping off point for a new array:
-
-```js
-const names = ['Andrew', 'Jonathan', 'Josh']
-
-const moreNames = [...names, 'Brandon', 'Steve']
-//This spreads our names array onto moreNames and then adds 'Brandon' and 'Steve' to the moreFriends array.
-//Again, this does not affect the original array.
-```
-
-Finally, we can use the spread operator to concatenate arrays:
-
-```js
-const evens = [2, 4, 6]
-const odds = [1, 3, 5]
-
-const nums = [...evens, ...odds]
-//This will concatenate the two arrays together.
-//nums will be equal to [2,4,6,1,2,3]
-```
-
-> Note: All of the techniques we have learned here can be mixed an matched to make your code more concise and readable.
-
-#### Objects
-
-Using the spread operator with objects works much the same as with arrays. We can make a copy of an object:
-
-```js
-const person = {
-  name: 'Andrew',
-  age: 27,
-  married: true,
-}
-
-const anotherPerson = { ...person }
-//This gives me a copy of my person object without affecting the original
-```
-
-We can also use existing objects as a jumping off point:
-
-```js
-const person = {
-  name: 'Andrew',
-  age: 27,
-  married: true,
-}
-
-const detailedPerson = { ...person, height: '6 feet', attractive: true }
-//This will create a new object which has the same properties as the original person object
-//It also adds the height and attractive properties.
-```
-
-Finally, you can overwrite existing properties on new objects. Let's imagine that Josh is also 27 and married but his name is Josh, we can do:
-
-```js
-const person = {
-  name: 'Andrew',
-  age: 27,
-  married: true,
-}
-
-const secondPerson = { ...person, name: 'Josh' }
-
-//This will give us a new object based on the person object, but with a unique name property.
-```
 
 # Additional Resources
 
@@ -555,6 +583,16 @@ const secondPerson = { ...person, name: 'Josh' }
 [Array.prototype.reduce() - JavaScript \| MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce) - Breakdown of .reduce. This is a VERY powerful array method and would be worth your time to practice using it for more than summing numbers.
 
 [Spread syntax - JavaScript \| MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) - More information about spread.
+
+[JavaScript Number Prototype Methods \| W3 Schools](https://www.w3schools.com/js/js_number_methods.asp) - This is a helpful list that provides some of the most common methods associated with the Number data type
+
+[JavaScript String Prototype Methods \| W3 Schools](https://www.w3schools.com/js/js_string_methods.asp) - This is a helpful list that provides some of the most common methods associated with the String data type
+
+[JavaScript Array Prototype Methods \| W3 Schools](https://www.w3schools.com/js/js_array_methods.asp) - This is a helpful list that provides some of the most common methods associated with Arrays
+
+[JavaScript Math Methods \| W3 Schools](https://www.w3schools.com/js/js_math.asp) - This is a helpful list of some of the most common Math methods available in JavaScript
+
+[JavaScript JSON Methods \| W3 Schools](https://www.w3schools.com/js/js_json.asp) - This is a helpful list of some of the most common JSON methods available in JavaScript
 
 
 ## Videos
